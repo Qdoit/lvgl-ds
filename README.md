@@ -43,7 +43,8 @@ $(BUILDDIR)/%.s.o $(BUILDDIR)/%.S.o : %.s
 - The (on-screen) keyboard component works normally.
 - Due to the DS's low resolution using one of the pixel-perfect (lv_font_unscii_(8 or 16)) fonts is beneficial. These fonts do not work properly as UI for the on-screen keyboard, though.
 - For logging, if one of your screens is running a console you can use `LV_LOG_PRINTF`. Otherwise, set up a no$gba style debug console with `consoleDebugInit(DebugDevice_NOCASH)` and setup a log callback which simply prints to stderr.
-- The default memory usage is around 192KB (default lvgl memory limit of 64KB + 2 framebuffers), while VRAM usage is most of VRAM_B (first 98304KB, in FB0 mode) and all of VRAM_D (SUB_BG mode). As there is plenty of memory left, you may want to increase that limit.
+- The default memory usage is around 192KB (default lvgl memory limit of 64KB + 2 framebuffers). As there is plenty of memory left, if you run into issues consider increasing `LV_MEM_SIZE`
+- VRAM_B and VRAM_C are taken up by this library. When running in FB mode, VRAM_B is only used up to the 98304th byte.
 
 
 ## License
